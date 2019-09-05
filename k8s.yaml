@@ -16,6 +16,9 @@ spec:
         name: nginx-demo
         ports:
         - containerPort: 80
+        env:
+        - name: branch
+          value: <BRANCH_NAME>
 ---
 apiVersion: v1
 kind: Service
