@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-demo
-  namespace: default
+  labels:
+    app: nginx
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       labels:
-        app: nginx-demo
+        app: nginx
     spec:
       containers:
-      - image: 10.10.36.234:10010/library/nginx:<BUILD_TAG>
-        imagePullPolicy: IfNotPresent
-        name: nginx-demo
+      - name: nginx
+        image: 10.10.36.234:10010/library/nginx:<BUILD_TAG>
         ports:
         - containerPort: 80
-        env:
-        - name: branch
-          value: <BRANCH_NAME>
 ---
 apiVersion: v1
 kind: Service
@@ -27,7 +27,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: nginx-demo
+    app: nginx
   type: NodePort
   ports:
   - protocol: TCP
