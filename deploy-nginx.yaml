@@ -11,7 +11,7 @@ spec:
         app: nginx-demo
     spec:
       containers:
-      - image: dongyali521521/nginx-demo:<BUILD_TAG>
+      - image: nginx/nginx-demo:<BUILD_TAG>
         imagePullPolicy: IfNotPresent
         name: nginx-demo
         ports:
