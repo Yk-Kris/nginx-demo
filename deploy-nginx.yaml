@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: 10.10.36.234:10010/library/nginx:<BUILD_TAG>
+        image: nginx:14.2.2
+        #image: 10.10.36.234:10010/library/nginx:<BUILD_TAG>
         ports:
         - containerPort: 80
 ---
